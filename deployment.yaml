@@ -4,3 +4,12 @@ metadata:
   name: ci-cd
   labels:
     app: ci-cd
+    spec:
+        ports:
+          - port: 3000
+        selector:
+          app: ci-cd
+          tier: frontend
+        type: LoadBalancer
+      ---
+    
