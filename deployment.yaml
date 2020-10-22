@@ -12,4 +12,28 @@ metadata:
           tier: frontend
         type: LoadBalancer
       ---
-    
+        apiVersion: apps/v1beta1
+        kind: Deployment
+        metadata:
+          name: ci-cd
+          labels:
+            app: ci-cd
+        spec:
+          selector:
+            matchLabels:
+              app: ci-cd
+              tier: frontend
+          strategy:
+            type: Recreate
+          template:
+            metadata:
+              labels:
+                app: ci-cd
+                tier: frontend
+            spec:
+              containers:
+              - image: gcr.io/ci-cd-217118/ci-cd:0.1.0
+                name: ci-cd
+                ports:
+                - containerPort: 3000
+                  name: ci-cd
