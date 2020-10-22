@@ -13,7 +13,7 @@ spec:
   type: LoadBalancer
 ---
 apiVersion: apps/v1beta1
-kind: Deployment
+kind: deployment
 metadata:
   name: ci-cd
   labels:
@@ -32,7 +32,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: gcr.io/ci-cd-217118/ci-cd:0.1.0
+      - image: gcr.io/pipeline-293210/ci-cd:0.3.0
         name: ci-cd
         ports:
         - containerPort: 3000
